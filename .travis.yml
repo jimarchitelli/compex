@@ -19,6 +19,7 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   #Take images and pusah them to Docker Hub
+  - docker push jmarchitelli/prod-nginx ./client
   - docker push jmarchitelli/prod-nginx ./nginx
   - docker push jmarchitelli/prod-server ./server
   - docker push jmarchitelli/prod-worker ./worker
