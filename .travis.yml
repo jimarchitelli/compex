@@ -23,3 +23,16 @@ after_success:
   - docker push jimarchitelli/prod-nginx
   - docker push jimarchitelli/prod-server
   - docker push jimarchitelli/prod-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "milt-docker"
+  env: "MiltDocker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-256162046807"
+  bucket_path: "milt-docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
